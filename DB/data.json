@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "3",
+      "name": "Vikas Patil",
+      "age": 40,
+      "grade": "A"
+    },
+    {
+      "id": "4",
+      "name": "Khalid Mujawar",
+      "age": 21,
+      "grade": "C"
+    },
+    {
+      "id": "5",
+      "name": "Winston Saldanaha",
+      "age": 50,
+      "grade": "D"
+    },
+    {
+      "id": "6",
+      "name": "Yadnesh Wani",
+      "age": 26,
+      "grade": "A"
+    },
+    {
+      "id": "8",
+      "name": "Om Koli",
+      "age": 12,
+      "grade": "A"
+    }
+  ]
+}
