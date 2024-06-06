@@ -68,7 +68,7 @@
               <input type="text" v-model="newStudent.name" placeholder="Name" />
             </td>
             <td>
-              <input type="number" v-model="newStudent.age" placeholder="Age" />
+              <input type="number" v-model="newStudent.age" placeholder="Age" min="1" />
             </td>
             <td>
               <input type="text" v-model="newStudent.grade" placeholder="Grade" />
@@ -86,7 +86,7 @@
               <input type="text" v-model="updatedStudent.name" placeholder="Name" />
             </td>
             <td>
-              <input type="number" v-model="updatedStudent.age" placeholder="Age" />
+              <input type="number" v-model="updatedStudent.age" placeholder="Age" min="1" />
             </td>
             <td>
               <input type="text" v-model="updatedStudent.grade" placeholder="Grade" />
@@ -102,7 +102,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
@@ -165,8 +164,11 @@ const deleteStudent = async (id, index) => {
 };
 
 const addStudent = async () => {
-  try
-  {
+  try {
+    if (newStudent.value.age <= 0) {
+      alert('Age must be a positive number.');
+      return;
+    }
     const response = await axios.post('http://localhost:3000/users', newStudent.value);
     if (response.status !== 201) {
       throw new Error('Failed to add student');
@@ -191,6 +193,10 @@ const updateStudentForm = (student) => {
 
 const saveUpdatedStudent = async () => {
   try {
+    if (updatedStudent.value.age <= 0) {
+      alert('Age must be a positive number.');
+      return;
+    }
     const { id, ...updatedData } = updatedStudent.value;
     const response = await axios.put(`http://localhost:3000/users/${id}`, updatedData);
     if (response.status !== 200) {
@@ -222,7 +228,6 @@ onMounted(async () => {
   }
 });
 </script>
-
 <style scoped>
 .table-container {
   flex-direction: column;
